@@ -32,6 +32,14 @@ export class UsersService {
 
         return user;
     }
+    
+
+   async findByUserName(userName: string){
+    const userN = await this.userModel.findOne({userName})
+    console.log(userN);
+    return userN;
+   }
+
 
     async updateById(id: String, user: User): Promise<User> {
         return await this.userModel.findByIdAndUpdate(id, user, {

@@ -1,7 +1,7 @@
 import { IsString, IsBoolean, IsOptional, IsNotEmpty} from "class-validator"
 
 
-export class CreateUserDTO {
+export class UpdateUserDto {
 
     @IsBoolean()
     isAdmin: boolean;
