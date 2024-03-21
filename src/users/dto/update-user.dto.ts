@@ -3,8 +3,8 @@ import { IsString, IsBoolean, IsOptional, IsNotEmpty} from "class-validator"
 
 export class UpdateUserDto {
 
-    @IsBoolean()
-    isAdmin: boolean;
+    @IsString()
+    role: string;
 
     @IsString()
     image: string;

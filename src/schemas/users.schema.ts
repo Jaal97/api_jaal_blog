@@ -15,11 +15,15 @@ export class User {
     })
 
     @Prop({
-        default: false
+        default: 'user'
     })
-    isAdmin: boolean;
 
-    @Prop()
+    role: string;
+
+    @Prop({
+        default: null
+    }
+    )
     image: string;
 
     @Prop({

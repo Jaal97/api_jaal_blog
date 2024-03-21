@@ -3,8 +3,17 @@ import { AuthService } from './auth.service';
 import { RegisterDTO } from './dto/register.dto';
 import { LoginDTO } from './dto/login.dto';
 import { AuthGuard } from './guard/auth.guard';
+import { Request as Rq } from 'express';
+import { Roles } from './decorators/roles.decorator';
+import { RolesGuard } from './guard/roles.guard';
 // import { Request } from 'express';
 
+interface RequestWithUser extends Rq{
+    user: {
+        userName: string; 
+        role: string;
+    }
+}
 
 @Controller('auth')
 export class AuthController {
@@ -28,12 +37,13 @@ export class AuthController {
     }
 
     @Get('profile')
-    @UseGuards(AuthGuard)
+    @Roles('admin') 
+    @UseGuards(AuthGuard, RolesGuard)
     profile(
-        @Request() req,
+        @Request() req:RequestWithUser,
         
     ){
-        return req.user;
+        return this.authService.profile(req.user)
     }
 
 

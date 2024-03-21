@@ -16,7 +16,7 @@ export class AuthService {
 
     }
 
-    async register({isAdmin, image, userName, password}: RegisterDTO){
+    async register({role, image, userName, password}: RegisterDTO){
 
     const user = await this.userService.findByUserName(userName);
 
@@ -24,14 +24,20 @@ export class AuthService {
     throw new BadRequestException('El usuario ya existe');
     }
 
-    return await this.userService.create({
-        isAdmin,
+    await this.userService.create({
+        role,
         image,
         userName,
         password: await bcryptjs.hash(password, 10)
 
     });
-      
+
+    return {
+        role,
+        image,
+        userName
+    }
+        
     }
 
     
@@ -48,14 +54,26 @@ export class AuthService {
             throw new UnauthorizedException('La contraseña es incorrecta');
         }
 
-        const payload = {userName: user.userName, sub: user.id};
+        const payload = {userName: user.userName, role: user.role};
 
         const token = await this.jwtService.signAsync(payload)
 
-        
+        // const image = payload.sub;
+        // console.log(payload);
         return {
             token,
-            userName,
+            userName
+            
         }
+    }
+
+    async profile({userName, role}: {userName:string, role:string}){
+        // console.log(userName);
+        // console.log(isAdmin);
+        // if(role !== 'admin'){
+        //      throw new UnauthorizedException('No tienes permisos para acceder')
+        // }
+        return await this.userService.findByUserName(userName);
+        // return {userName, image}
     }
 }

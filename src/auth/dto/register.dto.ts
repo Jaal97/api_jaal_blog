@@ -1,10 +1,10 @@
 import { Transform } from "class-transformer";
-import { IsBoolean, IsNotEmpty, IsString, MinLength} from "class-validator";
+import {IsNotEmpty, IsString, MinLength} from "class-validator";
 
 export class RegisterDTO {
    
-    @IsBoolean()
-    isAdmin: boolean;
+    @IsString()
+    role: string;
 
     @IsNotEmpty()
     @IsString()
