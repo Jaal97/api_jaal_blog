@@ -42,15 +42,17 @@ export class AuthService {
 
     
     async login({userName, password}: LoginDTO){
-        const user = await this.userService.findByUserName(userName);
+        const user = await this.userService.findByUserNameWithPassword(userName);
 
         if(!user){
+            console.log(user);
             throw new UnauthorizedException('El nombre de usuario es incorrecto');
         }
 
         const isPasswordValid = await bcryptjs.compare(password, user.password);
         
         if(!isPasswordValid){
+            console.log(user);
             throw new UnauthorizedException('La contraseña es incorrecta');
         }
 
@@ -60,6 +62,7 @@ export class AuthService {
 
         // const image = payload.sub;
         // console.log(payload);
+        console.log(user);
         return {
             token,
             userName

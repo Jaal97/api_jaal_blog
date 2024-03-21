@@ -40,6 +40,11 @@ export class UsersService {
     return userN;
    }
 
+    async findByUserNameWithPassword(userName: string){
+        return  await this.userModel.findOne({userName}).select(['userName', 'password'])
+        ;
+   }
+
 
     async updateById(id: String, user: User): Promise<User> {
         return await this.userModel.findByIdAndUpdate(id, user, {
