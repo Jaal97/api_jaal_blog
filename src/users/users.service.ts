@@ -41,7 +41,7 @@ export class UsersService {
    }
 
     async findByUserNameWithPassword(userName: string){
-        return  await this.userModel.findOne({userName}).select(['userName', 'password'])
+        return  await this.userModel.findOne({userName}).select(['role', 'image','userName', 'password'])
         ;
    }
 

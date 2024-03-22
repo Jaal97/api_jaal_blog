@@ -74,7 +74,7 @@ export class AuthService {
         // console.log(userName);
         // console.log(isAdmin);
         // if(role !== 'admin'){
-        //      throw new UnauthorizedException('No tienes permisos para acceder')
+        //     throw new UnauthorizedException('No tienes permisos para acceder')
         // }
         return await this.userService.findByUserName(userName);
         // return {userName, image}

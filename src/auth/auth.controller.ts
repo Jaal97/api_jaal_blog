@@ -6,16 +6,19 @@ import { LoginDTO } from './dto/login.dto';
 import { Request as Rq } from 'express';
 // import { Roles } from './decorators/roles.decorator';
 // import { RolesGuard } from './guard/roles.guard';
-import { Role } from './enums/rol.enum';
+import { Role } from '../common/enums/rol.enum';
 import { Auth } from './decorators/auth.decorator';
+import { ActiveUser } from 'src/common/decorators/active-user.decorator';
+import { User } from 'src/schemas/users.schema';
+import { UserActiveInterface } from 'src/common/interface/user-active.interface';
 // import { Request } from 'express';
 
-interface RequestWithUser extends Rq{
-    user: {
-        userName: string; 
-        role: string;
-    }
-}
+// interface RequestWithUser extends Rq{
+//     user: {
+//         userName: string; 
+//         role: string;
+//     }
+// }
 
 @Controller('auth')
 export class AuthController {
@@ -50,12 +53,13 @@ export class AuthController {
 
 
     @Get('profile')
-    @Auth(Role.ADMIN)
+    @Auth(Role.USER)
     profile(
-        @Request() req:RequestWithUser,
+        @ActiveUser() user: UserActiveInterface
+        // @Request() req:RequestWithUser,
         
     ){
-        return this.authService.profile(req.user)
+        return this.authService.profile(user)
     }
 
 
