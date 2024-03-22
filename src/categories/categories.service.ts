@@ -21,7 +21,7 @@ export class CategoriesService {
         const res = await this.categoryModel.create(category);
         return res;
     }
-
+    
     // async create(user:User): Promise<User> {
     //     const res = await this.userModel.create(user);
     //     return res;

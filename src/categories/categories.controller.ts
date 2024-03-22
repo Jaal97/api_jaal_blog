@@ -4,10 +4,14 @@ import { CategoriesService } from './categories.service';
 import { Category } from 'src/schemas/categories.schema';
 import { CreateCategoryDTO } from 'src/categories/dto/create-category.dto';
 import { UpdateCategoryDTO } from 'src/categories/dto/update-category.dto';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { Role } from 'src/common/enums/rol.enum';
 
+@Auth(Role.ADMIN)
 @Controller('categories')
 export class CategoriesController {
     constructor(private categoryService: CategoriesService) {}
+
 
     @Get()
     async getAllCategories(): Promise<Category[]> {

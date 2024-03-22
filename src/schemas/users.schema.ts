@@ -3,6 +3,7 @@ import { Role } from "../common/enums/rol.enum";
 
 
 
+
 @Schema({
     timestamps:true
 })
@@ -10,17 +11,17 @@ import { Role } from "../common/enums/rol.enum";
 
 
 export class User {
-    @Prop({
-        required: true,
-        trim: true
-    })
+   
 
-    @Prop({
-        type: 'enum',
-        default: Role.USER,
-        enum: Role
-    })
+    // _id: SC.Types.ObjectId;
 
+    // @Prop({
+    //     type: 'enum',
+    //     default: Role.USER,
+    //     enum: Role
+    // })
+
+    @Prop()
     role: string;
 
     @Prop({

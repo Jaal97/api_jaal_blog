@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-
+import { Schema as SC } from "mongoose";
 
 
 @Schema({
@@ -9,10 +9,8 @@ import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
 
 
 export class Category {
-    @Prop({
-        required: true,
-        trim: true
-    })
+    
+    // _id: SC.Types.ObjectId;
 
 
     @Prop({
