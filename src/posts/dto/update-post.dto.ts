@@ -1,18 +1,16 @@
-import { IsString, IsNotEmpty} from "class-validator"
+import { IsString, IsNotEmpty, IsMongoId} from "class-validator"
 // import * as mongoose from "mongoose";
+import { Document, ObjectId, Types } from "mongoose";
 
-
-export class UpdatePostDTO {
+export class UpdatePostDTO extends Document<Types.ObjectId>{
 
   
-
+    @IsMongoId()    
+    idCategory: any;
     
-    // idCategory: mongoose.Schema.Types.ObjectId;
-
-
-
     
-    // idUser: mongoose.Types.ObjectId;
+    @IsMongoId()
+    idUser: any;
 
 
     

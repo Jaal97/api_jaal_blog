@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from "@nestjs/mongoose";
-import { Schema as SC } from "mongoose";
+import { Document } from "mongoose";
 
 
 @Schema({
@@ -8,7 +8,7 @@ import { Schema as SC } from "mongoose";
 
 
 
-export class Category {
+export class Category extends Document{
     
     // _id: SC.Types.ObjectId;
 

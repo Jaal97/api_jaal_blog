@@ -1,7 +1,8 @@
 
 import { Body, Controller, Delete, Get, Param, Post, Put } from '@nestjs/common';
 import { CategoriesService } from './categories.service';
-import { Category } from 'src/schemas/categories.schema';
+
+import { Category } from './entities/categories.entity';
 import { CreateCategoryDTO } from 'src/categories/dto/create-category.dto';
 import { UpdateCategoryDTO } from 'src/categories/dto/update-category.dto';
 import { Auth } from 'src/auth/decorators/auth.decorator';

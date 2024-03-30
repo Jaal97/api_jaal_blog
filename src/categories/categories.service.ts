@@ -2,7 +2,7 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 
-import { Category } from 'src/schemas/categories.schema';
+import { Category } from './entities/categories.entity';
 
 @Injectable()
 export class CategoriesService {

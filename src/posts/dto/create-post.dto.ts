@@ -1,19 +1,18 @@
-import { IsString, IsNotEmpty} from "class-validator"
+
+import { IsString, IsNotEmpty, IsMongoId} from "class-validator"
 // import * as mongoose from "mongoose";
+import mongoose, { Document} from "mongoose";
 
 
-export class CreatePostDTO {
-
-  
-
-    
-    // idCategory: mongoose.Schema.Types.ObjectId;
+export class CreatePostDTO extends Document{
 
 
+    @IsMongoId()    
+    idCategory: any;
 
     
-    // idUser: mongoose.Types.ObjectId;
-
+    @IsMongoId()
+    idUser: any;
 
     
     @IsNotEmpty()
@@ -24,6 +23,7 @@ export class CreatePostDTO {
     @IsString()
     image: string;
 
+    
     @IsNotEmpty()
     @IsString()
     content: string;

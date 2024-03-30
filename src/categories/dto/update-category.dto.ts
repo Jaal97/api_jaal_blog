@@ -1,7 +1,7 @@
 import { IsString, IsBoolean, IsOptional, IsNotEmpty} from "class-validator"
+import { Document } from "mongoose";
 
-
-export class UpdateCategoryDTO {
+export class UpdateCategoryDTO extends Document{
 
 
     @IsString()

@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  await app.listen(3000);
+  app.enableCors(); //encender cords
+  app.setGlobalPrefix('api') //Establecemos este prefijo para todas las rutas
+  await app.listen(4000);
 }
 bootstrap();

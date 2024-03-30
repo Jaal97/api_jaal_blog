@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Param, Put, Delete} from '@nestjs/common';
 import { PostsService } from './posts.service';
-import { Post as Pt } from 'src/schemas/posts.schema';
+import { Post as Pt } from './entities/posts.entity';
 import { CreatePostDTO } from './dto/create-post.dto';
 import { UpdatePostDTO } from './dto/update-post.dto';
 
@@ -13,7 +13,7 @@ export class PostsController {
         return this.postService.findAll()
     }
 
-
+    
     @Post()
     async createPost(
         @Body()

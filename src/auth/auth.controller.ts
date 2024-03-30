@@ -9,7 +9,7 @@ import { Request as Rq } from 'express';
 import { Role } from '../common/enums/rol.enum';
 import { Auth } from './decorators/auth.decorator';
 import { ActiveUser } from 'src/common/decorators/active-user.decorator';
-import { User } from 'src/schemas/users.schema';
+import { User } from 'src/users/entities/users.entity';
 import { UserActiveInterface } from 'src/common/interface/user-active.interface';
 // import { Request } from 'express';
 

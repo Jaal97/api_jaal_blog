@@ -1,7 +1,7 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
-import { Post as Pt } from 'src/schemas/posts.schema';
+import { Post as Pt } from './entities/posts.entity';
 
 @Injectable()
 export class PostsService {
@@ -12,8 +12,11 @@ export class PostsService {
 
 
     async findAll(): Promise<Pt[]> {
-        const posts =  await this.ptModel.find();
-        return posts;
+        return await this.ptModel.find()
+            .populate(['idUser', 'idCategory'])
+            .exec();
+        // const posts =  await this.ptModel.find();
+        // return posts;
     }
 
 
@@ -24,7 +27,9 @@ export class PostsService {
 
 
     async findById(id: String): Promise<Pt> {
-        const post = await this.ptModel.findById(id);
+        const post = await this.ptModel.findById(id)
+            .populate(['idUser', 'idCategory'])
+            .exec();
 
         if(!post){
             throw new NotFoundException('Post no encontrado ');
