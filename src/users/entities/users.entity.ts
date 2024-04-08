@@ -12,15 +12,6 @@ import { Role } from "../../common/enums/rol.enum";
 
 export class User {
    
-
-    // _id: SC.Types.ObjectId;
-
-    // @Prop({
-    //     type: 'enum',
-    //     default: Role.USER,
-    //     enum: Role
-    // })
-
     @Prop()
     role: string;
 

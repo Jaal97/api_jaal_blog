@@ -37,7 +37,6 @@ export class AuthService {
         image,
         userName
     }
-        
     }
 
     
@@ -45,24 +44,24 @@ export class AuthService {
         const user = await this.userService.findByUserNameWithPassword(userName);
 
         if(!user){
-            console.log(user);
             throw new UnauthorizedException('El nombre de usuario es incorrecto');
         }
 
         const isPasswordValid = await bcryptjs.compare(password, user.password);
         
         if(!isPasswordValid){
-            console.log(user);
             throw new UnauthorizedException('La contraseña es incorrecta');
         }
 
+        
         const payload = {id:user.id, userName: user.userName, role: user.role};
+        
 
         const token = await this.jwtService.signAsync(payload)
 
         // const image = payload.sub;
         // console.log(payload);
-        console.log(user);
+        // console.log(user);
         return {
             token,
             userName

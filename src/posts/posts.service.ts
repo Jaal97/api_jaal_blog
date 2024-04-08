@@ -1,13 +1,16 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { Injectable, NotFoundException, Session } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { Post as Pt } from './entities/posts.entity';
+
+import { UserActiveInterface } from 'src/common/interface/user-active.interface';
 
 @Injectable()
 export class PostsService {
     constructor(
         @InjectModel(Pt.name)
-        private ptModel: mongoose.Model<Pt>
+        private ptModel: mongoose.Model<Pt>,
+        // private userService: UsersService,
     ){}
 
 
@@ -20,9 +23,24 @@ export class PostsService {
     }
 
 
-    async create(post:Pt): Promise<Pt> {
-        const res = await this.ptModel.create(post);
+    async create(post:Pt, user: UserActiveInterface): Promise<Pt> {
+      
+        const p = {
+            idCategory: post.idCategory,
+            // idUser: post.idUser,
+            idUser: user.id,
+            title: post.title,
+            image: post.image,
+            content: post.content,
+            video: post.video
+        }
+    
+        const res = await this.ptModel.create(p);
+      
+        // console.log(user);
+        // const res = post;
         return res;
+        
     }
 
 

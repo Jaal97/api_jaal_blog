@@ -61,6 +61,4 @@ export class AuthController {
     ){
         return this.authService.profile(user)
     }
-
-
 }

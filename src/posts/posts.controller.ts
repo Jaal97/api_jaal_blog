@@ -3,6 +3,9 @@ import { PostsService } from './posts.service';
 import { Post as Pt } from './entities/posts.entity';
 import { CreatePostDTO } from './dto/create-post.dto';
 import { UpdatePostDTO } from './dto/update-post.dto';
+import { ActiveUser } from 'src/common/decorators/active-user.decorator';
+import { UserActiveInterface } from 'src/common/interface/user-active.interface';
+// import { User } from 'src/users/entities/users.entity';
 
 @Controller('posts')
 export class PostsController {
@@ -17,9 +20,10 @@ export class PostsController {
     @Post()
     async createPost(
         @Body()
-        post: CreatePostDTO
+        post: CreatePostDTO,
+        @ActiveUser() user: UserActiveInterface
     ): Promise<Pt> {
-        return this.postService.create(post)
+        return this.postService.create(post, user )
     }
 
 
