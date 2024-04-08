@@ -5,6 +5,8 @@ import { CreatePostDTO } from './dto/create-post.dto';
 import { UpdatePostDTO } from './dto/update-post.dto';
 import { ActiveUser } from 'src/common/decorators/active-user.decorator';
 import { UserActiveInterface } from 'src/common/interface/user-active.interface';
+import { Auth } from 'src/auth/decorators/auth.decorator';
+import { Role } from 'src/common/enums/rol.enum';
 // import { User } from 'src/users/entities/users.entity';
 
 @Controller('posts')
@@ -35,7 +37,7 @@ export class PostsController {
         return this.postService.findById(id)
     }
 
-
+    
     @Put(':id')
     async updatePost(
         @Param('id')
@@ -46,7 +48,7 @@ export class PostsController {
         return this.postService.updateById(id, post);
     }
 
-
+    @Auth(Role.ADMIN)
     @Delete(':id')
     async deletePost(
         @Param('id')

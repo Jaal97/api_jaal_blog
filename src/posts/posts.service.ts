@@ -28,7 +28,7 @@ export class PostsService {
         const p = {
             idCategory: post.idCategory,
             // idUser: post.idUser,
-            idUser: user.id,
+            idUser: user.id, 
             title: post.title,
             image: post.image,
             content: post.content,
@@ -64,6 +64,7 @@ export class PostsService {
         });
     }
 
+    
     async deleteById(id: String): Promise<Pt> {
         return await this.ptModel.findByIdAndDelete(id);
     }
