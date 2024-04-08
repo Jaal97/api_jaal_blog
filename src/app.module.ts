@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Module, forwardRef } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -17,7 +17,7 @@ import { AuthModule } from './auth/auth.module';
     MongooseModule.forRoot(process.env.DB),
     UsersModule, 
     PostsModule, 
-    CategoriesModule, AuthModule],
+    CategoriesModule],
 
   controllers: [AppController],
   providers: [AppService],
