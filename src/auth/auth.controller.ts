@@ -9,8 +9,9 @@ import { Request as Rq } from 'express';
 import { Role } from '../common/enums/rol.enum';
 import { Auth } from './decorators/auth.decorator';
 import { ActiveUser } from 'src/common/decorators/active-user.decorator';
-import { User } from 'src/users/entities/users.entity';
+//import { User } from 'src/users/entities/users.entity';
 import { UserActiveInterface } from 'src/common/interface/user-active.interface';
+import { ApiCreatedResponse, ApiForbiddenResponse, ApiTags } from '@nestjs/swagger';
 // import { Request } from 'express';
 
 // interface RequestWithUser extends Rq{
@@ -19,13 +20,16 @@ import { UserActiveInterface } from 'src/common/interface/user-active.interface'
 //         role: string;
 //     }
 // }
-
+@ApiTags('Auth')
 @Controller('auth')
 export class AuthController {
 
     constructor(private authService: AuthService) {}
 
     @Post('register')
+    @Post()
+    @ApiCreatedResponse({description: 'Te has registrado'})
+    @ApiForbiddenResponse({description: 'No te has podido registrar'})
     register(
         @Body()
         registerDTO: RegisterDTO
@@ -34,6 +38,8 @@ export class AuthController {
     }
 
     @Post('login')
+    @ApiCreatedResponse({description: 'Te has loggeado'})
+    @ApiForbiddenResponse({description: 'No te has podido loggear'})
     login(
         @Body()
         loginDTO: LoginDTO

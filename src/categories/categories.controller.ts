@@ -7,7 +7,13 @@ import { CreateCategoryDTO } from 'src/categories/dto/create-category.dto';
 import { UpdateCategoryDTO } from 'src/categories/dto/update-category.dto';
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { Role } from 'src/common/enums/rol.enum';
+import { ApiBearerAuth, ApiTags, ApiUnauthorizedResponse } from '@nestjs/swagger';
 
+@ApiTags('Categories')
+@ApiBearerAuth()
+@ApiUnauthorizedResponse({
+    description: 'Acceso denegado comprueba el token'
+})
 @Auth(Role.ADMIN)
 @Controller('categories')
 export class CategoriesController {
