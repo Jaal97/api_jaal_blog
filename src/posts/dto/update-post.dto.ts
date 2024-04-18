@@ -1,6 +1,6 @@
 import { IsString, IsNotEmpty, IsMongoId} from "class-validator"
 // import * as mongoose from "mongoose";
-import { Document, ObjectId, Types } from "mongoose";
+import { Document, Types } from "mongoose";
 
 export class UpdatePostDTO extends Document<Types.ObjectId>{
 

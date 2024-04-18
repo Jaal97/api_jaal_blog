@@ -36,9 +36,6 @@ export class PostsService {
         }
     
         const res = await this.ptModel.create(p);
-      
-        // console.log(user);
-        // const res = post;
         return res;
         
     }

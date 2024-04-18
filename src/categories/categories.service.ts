@@ -33,8 +33,6 @@ export class CategoriesService {
         if(!category){
             throw new NotFoundException('Categoria no encontrada ');
         }
-
-
         return category;
     }
 

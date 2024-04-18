@@ -1,10 +1,11 @@
 import { Transform } from "class-transformer";
 import {IsNotEmpty, IsString, MinLength} from "class-validator";
+import { Role } from "src/common/enums/rol.enum";
 
 export class RegisterDTO {
    
     @IsString()
-    role: string;
+    role: Role;
 
     @IsNotEmpty()
     @IsString()

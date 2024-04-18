@@ -8,7 +8,7 @@ import { UserActiveInterface } from 'src/common/interface/user-active.interface'
 import { Auth } from 'src/auth/decorators/auth.decorator';
 import { Role } from 'src/common/enums/rol.enum';
 import { ApiCreatedResponse, ApiForbiddenResponse, ApiTags } from '@nestjs/swagger';
-// import { User } from 'src/users/entities/users.entity';
+
 
 @ApiTags('Posts')
 @Controller('posts')

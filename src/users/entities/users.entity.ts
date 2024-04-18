@@ -12,7 +12,9 @@ import { Role } from "../../common/enums/rol.enum";
 
 export class User {
    
-    @Prop()
+    @Prop({
+        default: Role.USER
+    })
     role: string;
 
     @Prop({
@@ -22,6 +24,7 @@ export class User {
     image: string;
 
     @Prop({
+        minlength: 4,
         required: true,
         trim: true,
         unique: true
@@ -29,6 +32,7 @@ export class User {
     userName: string;
 
     @Prop({
+        minlength: 4,
         required: true,
         trim: true,
         select: false

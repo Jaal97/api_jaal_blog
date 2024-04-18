@@ -9,10 +9,6 @@ import { Document } from "mongoose";
 
 
 export class Category extends Document{
-    
-    // _id: SC.Types.ObjectId;
-
-
     @Prop({
         required: true,
         trim: true,
