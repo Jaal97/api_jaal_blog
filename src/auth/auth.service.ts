@@ -62,18 +62,18 @@ export class AuthService {
         }
 
 
-        const payload = { id: user.id, userName: user.userName, role: user.role };
+        const payload = { id: user.id, userName: user.userName, role: user.role, image: user.image};
 
 
         const token = await this.jwtService.signAsync(payload)
-
+        const image = user.image;
         // const image = payload.sub;
         // console.log(payload);
         // console.log(user);
         return {
             token,
-            userName
-
+            userName,
+            image
         }
     }
 
