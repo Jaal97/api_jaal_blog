@@ -52,6 +52,36 @@ export class PostsService {
         return post;
     }
 
+    async findAllByCategory(idCategory: string): Promise<Pt[]> {
+        return await this.ptModel.find({idCategory})
+            .populate(['idUser', 'idCategory'])
+            .exec();
+        // const posts =  await this.ptModel.find();
+        // return posts;
+    }
+
+
+    async findByCategoryId(idCategory: string) {
+        const post = await this.ptModel.findOne({idCategory})
+            .populate(['idUser', 'idCategory'])
+            .exec();
+        return post;
+    }
+
+
+    async findByUserId(idUser: string) {
+        const post = await this.ptModel.findOne({idUser})
+            .populate(['idUser', 'idCategory'])
+            .exec();
+        return post;
+    }
+
+    // async findByUserName(userName: string){
+    //     const userN = await this.userModel.findOne({userName})
+    //     // console.log(userN);
+    //     return userN;
+    //    }
+
 
 
     async updateById(id: String, post: Pt): Promise<Pt> {

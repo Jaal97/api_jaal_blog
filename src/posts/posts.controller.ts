@@ -41,6 +41,33 @@ export class PostsController {
         return this.postService.findById(id)
     }
 
+
+    @Get('categories/:idCategory')
+    async getPostCategories(
+        @Param('idCategory')
+        idCategory: string
+    ): Promise<Pt[]>{
+        return this.postService.findAllByCategory(idCategory)
+    }
+
+
+    @Get('category/:idCategory')
+    async getPostCategory(
+        @Param('idCategory')
+        idCategory: string
+    ): Promise<Pt>{
+        return this.postService.findByCategoryId(idCategory)
+    }
+
+
+    @Get('user/:idUser')
+    async getPostUser(
+        @Param('idUser')
+        idUser: string
+    ): Promise<Pt>{
+        return this.postService.findByUserId(idUser)
+    }
+
     
     @Put(':id')
     async updatePost(
@@ -60,6 +87,4 @@ export class PostsController {
     ): Promise<Pt> {
         return this.postService.deleteById(id);
     }
-
-    
 }

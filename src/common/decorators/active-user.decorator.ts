@@ -6,7 +6,7 @@ export const ActiveUser = createParamDecorator(
          let str = request.rawHeaders[3]
          let newStr = str.slice(7)
          let user = JSON.parse (atob (newStr.split ('.')[1]));
-        console.log(user)
+        // console.log(user)
          return user;
      }
 )
