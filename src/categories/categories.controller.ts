@@ -13,7 +13,7 @@ import { ApiBearerAuth, ApiTags, ApiUnauthorizedResponse } from '@nestjs/swagger
 @ApiUnauthorizedResponse({
     description: 'Acceso denegado comprueba el token'
 })
-@Auth(Role.ADMIN)
+
 @Controller('categories')
 export class CategoriesController {
     constructor(private categoryService: CategoriesService) {}
