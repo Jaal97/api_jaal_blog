@@ -64,7 +64,7 @@ export class PostsController {
     async getPostUser(
         @Param('idUser')
         idUser: string
-    ): Promise<Pt>{
+    ): Promise<Pt[]>{
         return this.postService.findByUserId(idUser)
     }
 

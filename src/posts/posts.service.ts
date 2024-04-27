@@ -69,11 +69,11 @@ export class PostsService {
     }
 
 
-    async findByUserId(idUser: string) {
-        const post = await this.ptModel.findOne({idUser})
+    async findByUserId(idUser: string): Promise<Pt[]> {
+        return await this.ptModel.find({idUser})
             .populate(['idUser', 'idCategory'])
             .exec();
-        return post;
+        
     }
 
     // async findByUserName(userName: string){
