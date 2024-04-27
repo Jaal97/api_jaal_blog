@@ -16,7 +16,7 @@ export class AuthService {
 
     }
 
-    async register({ role, image, userName, password }: RegisterDTO) {
+    async register({ role, image, aboutMe, userName, password }: RegisterDTO) {
 
         const user = await this.userService.findByUserName(userName);
 
@@ -35,6 +35,7 @@ export class AuthService {
         await this.userService.create({
             role,
             image,
+            aboutMe,
             userName,
             password: await bcryptjs.hash(password, 10)
 
@@ -74,8 +75,8 @@ export class AuthService {
         return {
             token,
             id,
-            userName,
-            image
+            image,
+            userName
         }
     }
 

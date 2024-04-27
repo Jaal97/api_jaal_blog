@@ -11,6 +11,10 @@ export class CreateUserDTO {
     image: string;
 
     @IsNotEmpty()
+    @MinLength(6)
+    aboutMe: string;
+
+    @IsNotEmpty()
     @MinLength(4)
     userName: string;
     

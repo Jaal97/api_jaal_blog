@@ -24,6 +24,14 @@ export class User {
     image: string;
 
     @Prop({
+        minlength: 6,
+        required: true,
+        trim: true,
+        unique: true
+    })
+    aboutMe: string;
+
+    @Prop({
         minlength: 4,
         required: true,
         trim: true,

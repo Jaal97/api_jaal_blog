@@ -12,6 +12,10 @@ export class RegisterDTO {
     image: string;
 
     @IsString()
+    @MinLength(6)
+    aboutMe: string;
+
+    @IsString()
     @MinLength(4)
     userName: string;
 

@@ -11,6 +11,9 @@ export class UpdateUserDto {
     image: string;
 
     @IsNotEmpty()
+    aboutMe: string;
+
+    @IsNotEmpty()
     userName: string;
 
     @IsNotEmpty()
