@@ -1,5 +1,5 @@
 import { IsString, IsNotEmpty} from "class-validator"
-import { Role } from "src/common/enums/rol.enum";
+// import { Role } from "src/common/enums/rol.enum";
 
 
 export class UpdateUserDto {

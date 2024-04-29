@@ -22,10 +22,6 @@ export class CategoriesService {
         return res;
     }
     
-    // async create(user:User): Promise<User> {
-    //     const res = await this.userModel.create(user);
-    //     return res;
-    // }
 
     async findById(id: String): Promise<Category> {
         const category = await this.categoryModel.findById(id);
@@ -35,6 +31,7 @@ export class CategoriesService {
         }
         return category;
     }
+
 
     async updateById(id: String, category: Category): Promise<Category> {
         return await this.categoryModel.findByIdAndUpdate(id, category, {
@@ -47,4 +44,5 @@ export class CategoriesService {
     async deleteById(id: String): Promise<Category> {
         return await this.categoryModel.findByIdAndDelete(id);
     }
+    
 }

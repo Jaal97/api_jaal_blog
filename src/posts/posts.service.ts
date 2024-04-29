@@ -73,8 +73,6 @@ export class PostsService {
         return await this.ptModel.find({idCategory})
             .populate(['idUser', 'idCategory'])
             .exec();
-        // const posts =  await this.ptModel.find();
-        // return posts;
     }
 
 

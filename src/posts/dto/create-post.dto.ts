@@ -1,6 +1,5 @@
 
 import { IsString, IsNotEmpty, IsMongoId} from "class-validator"
-// import * as mongoose from "mongoose";
 import mongoose, { Document} from "mongoose";
 
 

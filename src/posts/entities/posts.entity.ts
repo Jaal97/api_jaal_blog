@@ -10,11 +10,6 @@ import { User } from "src/users/entities/users.entity";
 
 export class Post extends Document{
 
-    // @Prop({
-    //     required: true,
-    //     trim: true
-    // })
-
     @Prop({
         type: Types.ObjectId,
         ref: Category.name,

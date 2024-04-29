@@ -15,11 +15,11 @@ import { ConfigModule } from '@nestjs/config';
       isGlobal: true
     }),
     MongooseModule.forRoot(process.env.DB),
-    UsersModule, 
-    PostsModule, 
+    UsersModule,
+    PostsModule,
     CategoriesModule],
 
   controllers: [AppController],
   providers: [AppService],
 })
-export class AppModule {}
+export class AppModule { }
