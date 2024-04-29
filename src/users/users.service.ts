@@ -58,9 +58,11 @@ export class UsersService {
         let userAu = await this.findById(id);
 
 
-        if (userBu.userName !== userAu.userName) {
+        if (userBu !== null && userBu.userName !== userAu.userName) {
             throw new BadRequestException('El Username ya esta registrado')
         }
+
+        
 
         return await this.userModel.findByIdAndUpdate(id, user, {
             new: true,
