@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 
@@ -47,6 +47,15 @@ export class UsersService {
 
 
     async updateById(id: String, user: User): Promise<User> {
+
+        if(!user.aboutMe || user.aboutMe.length < 4){
+            throw new BadRequestException('Debes Proporcionar una frase o algo sobre tí')
+        }
+
+        if(!user.userName || user.userName.length < 4){
+            throw new BadRequestException('El username no puede estar vacio ni contener menos de 4 caracteres')
+        }
+
         return await this.userModel.findByIdAndUpdate(id, user, {
             new: true,
             runValidators: true,

@@ -1,4 +1,4 @@
-import { Injectable, NotFoundException, Session } from '@nestjs/common';
+import { BadRequestException, Injectable, NotFoundException, Session } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { Post as Pt } from './entities/posts.entity';
@@ -24,6 +24,23 @@ export class PostsService {
 
 
     async create(post:Pt, user: UserActiveInterface): Promise<Pt> {
+
+        if(!post.title || post.title.length < 4){
+            throw new BadRequestException('El titulo no puede estar vacio')
+        }
+
+        if(!post.image || post.image.length < 6){
+            throw new BadRequestException('Debes proporcionar una URL para la imagen de tu post')
+        }
+
+        if(!post.content || post.content.length < 10){
+            throw new BadRequestException('El contenido del post no puede estar vacio ni contener menos de 10 caracteres')
+        }
+
+        if(!post.video || post.video.length < 6){
+            throw new BadRequestException('Debes proporcionar una URL para el video relacionado')
+        }
+      
       
         const p = {
             idCategory: post.idCategory,

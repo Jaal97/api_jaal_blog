@@ -27,7 +27,6 @@ export class User {
         minlength: 6,
         required: true,
         trim: true,
-        unique: true
     })
     aboutMe: string;
 
