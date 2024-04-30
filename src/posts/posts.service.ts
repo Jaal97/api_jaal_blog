@@ -15,11 +15,11 @@ export class PostsService {
 
 
     async findAll(): Promise<Pt[]> {
-        return await this.ptModel.find()
+        const posts = await this.ptModel.find()
             .populate(['idUser', 'idCategory'])
             .exec();
         // const posts =  await this.ptModel.find();
-        // return posts;
+        return posts;
     }
 
 
@@ -27,6 +27,10 @@ export class PostsService {
 
         if(!post.title || post.title.length < 4){
             throw new BadRequestException('El titulo no puede estar vacio')
+        }
+
+        if(!post.idCategory){
+            throw new BadRequestException('Debes elegir una Categoría')
         }
 
         if(!post.image || post.image.length < 6){
