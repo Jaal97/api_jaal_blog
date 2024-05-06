@@ -46,6 +46,10 @@ export class UsersService {
 
     async updateById(id: String, user: User): Promise<User> {
 
+        if(URL.canParse(user.image) === false){
+            throw new BadRequestException('La URL de la imagen no es valida')
+        }
+
         if (!user.aboutMe || user.aboutMe.length < 4) {
             throw new BadRequestException('Debes Proporcionar una frase o algo sobre tí')
         }

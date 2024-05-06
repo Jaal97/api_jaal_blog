@@ -33,17 +33,19 @@ export class PostsService {
             throw new BadRequestException('Debes elegir una Categoría')
         }
 
-        if (!post.image || post.image.length < 6) {
-            throw new BadRequestException('Debes proporcionar una URL para la imagen de tu post')
+        if (!post.image ||  URL.canParse(post.image) === false || post.image.length < 6) {
+            throw new BadRequestException('Debes proporcionar una URL valida para la imagen de tu post')
         }
 
         if (!post.content || post.content.length < 10) {
             throw new BadRequestException('El contenido del post no puede estar vacio ni contener menos de 10 caracteres')
         }
 
-        if (!post.video || post.video.length < 6) {
-            throw new BadRequestException('Debes proporcionar una URL para el video relacionado')
+        if (!post.video ||  URL.canParse(post.video) === false || post.video.length < 6) {
+            throw new BadRequestException('Debes proporcionar una URL valida para el video relacionado')
         }
+
+        
 
 
         const p = {
@@ -112,16 +114,16 @@ export class PostsService {
             throw new BadRequestException('Debes elegir una Categoría')
         }
 
-        if (!post.image || post.image.length < 6) {
-            throw new BadRequestException('Debes proporcionar una URL para la imagen de tu post')
+        if (!post.image || URL.canParse(post.image) === false || post.image.length < 6) {
+            throw new BadRequestException('Debes proporcionar una URL valida para la imagen de tu post')
         }
 
         if (!post.content || post.content.length < 10) {
             throw new BadRequestException('El contenido del post no puede estar vacio ni contener menos de 10 caracteres')
         }
 
-        if (!post.video || post.video.length < 6) {
-            throw new BadRequestException('Debes proporcionar una URL para el video relacionado')
+        if (!post.video || URL.canParse(post.video) === false || post.video.length < 6) {
+            throw new BadRequestException('Debes proporcionar una URL valida para el video relacionado')
         }
         return await this.ptModel.findByIdAndUpdate(id, post, {
             new: true,
